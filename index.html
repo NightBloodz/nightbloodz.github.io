@@ -1,4 +1,22 @@
 ---
-layout: home
+layout: splash
 author_profile: true
 ---
+
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+
+{% include sidebar.html %}
+
+<div class="posts-list">
+  {% for post in site.posts %}
+    <a href="{{ post.url | relative_url }}" class="post-row">
+      {% if post.image %}
+        <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="post-image">
+      {% endif %}
+      <div class="post-content">
+        <h2 class="post-title">{{ post.title }}</h2>
+        <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+      </div>
+    </a>
+  {% endfor %}
+</div>
